@@ -1,0 +1,11 @@
+---
+
+- hosts: frontend
+  vars:
+    - server_name: "frontend"
+  roles:  
+    - ping
+    - ubuntu_update
+    - docker
+    - docker-compose
+

@@ -1,0 +1,38 @@
+---
+
+- hosts: frontend
+  vars:
+    - server_name: "frontend"
+  roles:  
+    - ubuntu_update
+    - common
+    - docker
+    - docker-compose
+
+- hosts: backend
+  vars:
+    - server_name: "backend"
+  roles:  
+    - ubuntu_update
+    - common
+    - docker
+    - docker-compose
+
+- hosts: gitlab
+  vars:
+    - server_name: "gitlab"
+  roles:  
+    - ubuntu_update
+    - common
+    - docker
+    - docker-compose
+
+- hosts: jenkins
+  vars:
+    - server_name: "jenkins"
+  roles:  
+    - ubuntu_update
+    - common
+    - docker
+    - docker-compose
+

@@ -1,0 +1,14 @@
+---
+# tasks file for ping
+- name: Update_Ubuntu - Test connection - Server {{ server_name }} - OS {{ os_release }}
+  ping:
+
+- name: Update and upgrade apt packages
+  become: true
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400 #One day
+
+- name: Update all packages to the latest version
+  apt:
+    upgrade: dist

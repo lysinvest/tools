@@ -1,0 +1,4 @@
+---
+# tasks file for ping
+- name: Test connection - Server {{ server_name }} - OS {{ os_release }}
+  ping:

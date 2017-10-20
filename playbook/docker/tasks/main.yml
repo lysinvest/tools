@@ -1,0 +1,46 @@
+---
+# tasks file for ping
+- name: Docker - Test connection - Server {{ server_name }} - OS {{ os_release }}
+  ping:
+
+- name: APT | Remove all docker versions
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - docker
+    - docker-engine
+    - docker.io
+
+- name: APT | Install nodesource dependencies
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apt-transport-https 
+    - ca-certificates 
+    - curl 
+    - software-properties-common
+    - git
+
+- name: Import Docker CE repository gpg key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+    id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+
+- name: Add Docker CE repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+    state: present
+
+- name: Update and upgrade apt packages
+  become: true
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400 #One day
+
+- name: Install Docker CE
+  apt:
+    name: docker-ce
+    state: present

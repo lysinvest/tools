@@ -1,0 +1,11 @@
+---
+
+- hosts: jenkins
+  vars:
+    - server_name: "jenkins"
+  roles:  
+    - ping
+    - ubuntu_update
+    - docker
+    - docker-compose
+

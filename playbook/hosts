@@ -1,0 +1,14 @@
+[test]
+localhost           ansible_connection=local
+
+[frontend]
+151.80.152.173 ansible_python_interpreter=/usr/bin/python3 ansible_connection=ssh ansible_user=root
+
+[backend]
+5.196.225.13 ansible_python_interpreter=/usr/bin/python3 ansible_connection=ssh ansible_user=root
+
+[gitlab]
+91.134.135.157 ansible_python_interpreter=/usr/bin/python3 ansible_connection=ssh ansible_user=root
+
+[jenkins]
+37.187.37.61 ansible_python_interpreter=/usr/bin/python3 ansible_connection=ssh ansible_user=root
